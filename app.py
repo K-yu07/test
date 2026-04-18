@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import random
 
-st.title("暗記アプリ（4択）")
+st.title("練習")
 
 df = pd.read_excel("quiz.xlsx")
 
@@ -59,7 +59,7 @@ if st.session_state.quiz_list:
 
     # 終了判定
     if st.session_state.index >= len(st.session_state.quiz_list):
-        st.success("終了！お疲れ様 🎉")
+        st.success("終了！お疲れ様 ")
         st.write(f"最終スコア: {st.session_state.correct}/{st.session_state.total}")
         st.stop()
 
@@ -93,10 +93,10 @@ if st.session_state.quiz_list:
         st.session_state.total += 1
 
         if user_answer == q["正解"]:
-            st.success("正解！🎉")
+            st.success("〇正解！")
             st.session_state.correct += 1
         else:
-            st.error(f"不正解… 正解は {q['正解']}")
+            st.error(f✖不正解… 正解は {q['正解']}")
             st.session_state.wrong_questions.append(q)
 
     # 次の問題
