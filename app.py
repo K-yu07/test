@@ -96,7 +96,7 @@ if st.session_state.quiz_list:
             st.success("〇正解！")
             st.session_state.correct += 1
         else:
-            st.error(f×不正解… 正解は {q['正解']}")
+            st.error(f"×不正解… 正解は {q['正解']}")
             st.session_state.wrong_questions.append(q)
 
     # 次の問題
