@@ -33,6 +33,22 @@ selected_genre = st.selectbox("ジャンルを選択", genres)
 # 問題数選択
 num_questions = st.selectbox("問題数", [5, 10, 20])
 filtered_df = df[df["ジャンル"] == selected_genre]
+df.sample(1)
+if "quiz_list" not in st.session_state:
+    st.session_state.quiz_list = filtered_df.sample(
+        min(num_questions, len(filtered_df))
+    ).to_dict("records")
+    st.session_state.index = 0
+q = st.session_state.quiz_list[st.session_state.index]
+if st.button("次の問題", key="next"):
+    st.session_state.index += 1
+
+    if st.session_state.index >= len(st.session_state.quiz_list):
+        st.success("終了！")
+    else:
+        st.session_state.choices = None
+
+    st.rerun()
 
 # ----------------------
 # 問題・選択肢
