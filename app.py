@@ -44,14 +44,20 @@ if st.button("次の問題"):
     st.session_state.choices = None  # ←これで再生成される
     st.rerun()
 
+# カウント初期化（先に書く）
 if "correct" not in st.session_state:
     st.session_state.correct = 0
 
 if "total" not in st.session_state:
     st.session_state.total = 0
-if st.button("答え合わせ"):
+
+if "wrong_questions" not in st.session_state:
+    st.session_state.wrong_questions = []
+
+# 判定（ここ1つだけ！）
+if st.button("答え合わせ", key="check"):
     st.session_state.total += 1
-    
+
     if user_answer == q["正解"]:
         st.success("正解！🎉")
         st.session_state.correct += 1
