@@ -5,15 +5,7 @@ import random
 st.title("暗記アプリ（4択）")
 
 df = pd.read_excel("quiz.xlsx")
-# ジャンル一覧取得
-genres = df["ジャンル"].unique()
 
-# 選択UI
-selected_genre = st.selectbox("ジャンルを選択", genres)
-
-# 問題数選択
-num_questions = st.selectbox("問題数", [5, 10, 20])
-filtered_df = df[df["ジャンル"] == selected_genre]
 
 # ----------------------
 # 初期化（最初に書く）
@@ -32,6 +24,15 @@ if "total" not in st.session_state:
 
 if "wrong_questions" not in st.session_state:
     st.session_state.wrong_questions = []
+# ジャンル一覧取得
+genres = df["ジャンル"].unique()
+
+# 選択UI
+selected_genre = st.selectbox("ジャンルを選択", genres)
+
+# 問題数選択
+num_questions = st.selectbox("問題数", [5, 10, 20])
+filtered_df = df[df["ジャンル"] == selected_genre]
 
 # ----------------------
 # 問題・選択肢
