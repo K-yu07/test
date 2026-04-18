@@ -43,3 +43,22 @@ if st.button("次の問題"):
     st.session_state.question = df.sample(1).iloc[0]
     st.session_state.choices = None  # ←これで再生成される
     st.rerun()
+
+if "correct" not in st.session_state:
+    st.session_state.correct = 0
+
+if "total" not in st.session_state:
+    st.session_state.total = 0
+if st.button("答え合わせ"):
+    st.session_state.total += 1
+    
+    if user_answer == q["正解"]:
+        st.success("正解！🎉")
+        st.session_state.correct += 1
+    else:
+        st.error(f"不正解… 正解は {q['正解']}")
+        st.session_state.wrong_questions.append(q)
+
+if st.session_state.total > 0:
+    accuracy = st.session_state.correct / st.session_state.total * 100
+    st.write(f"正解率: {accuracy:.1f}% ({st.session_state.correct}/{st.session_state.total})")
