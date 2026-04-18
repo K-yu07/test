@@ -62,3 +62,8 @@ if st.button("答え合わせ"):
 if st.session_state.total > 0:
     accuracy = st.session_state.correct / st.session_state.total * 100
     st.write(f"正解率: {accuracy:.1f}% ({st.session_state.correct}/{st.session_state.total})")
+if st.button("リセット"):
+    st.session_state.correct = 0
+    st.session_state.total = 0
+    st.session_state.wrong_questions = []
+    st.rerun()
