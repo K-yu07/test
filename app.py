@@ -10,8 +10,8 @@ df = pd.read_excel("quiz.xlsx")
 if "question" not in st.session_state:
     st.session_state.question = df.sample(1).iloc[0]
 
-# 選択肢も固定
-if "choices" not in st.session_state:
+# 選択肢生成（Noneなら作る）
+if "choices" not in st.session_state or st.session_state.choices is None:
     q = st.session_state.question
     choices = [
         q["選択肢1"],
@@ -41,6 +41,5 @@ if st.button("答え合わせ"):
 # 次の問題
 if st.button("次の問題"):
     st.session_state.question = df.sample(1).iloc[0]
-    st.session_state.choices = None  # リセット
+    st.session_state.choices = None  # ←これで再生成される
     st.rerun()
-    
