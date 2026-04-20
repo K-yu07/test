@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title("暗記アプリ（記述式）")
+st.title("COFFEE MEISTER")
 
 # ----------------------
 # データ読み込み
