@@ -36,7 +36,7 @@ if "wrong_questions" not in st.session_state:
 genres = df["ジャンル"].dropna().unique()
 selected_genre = st.selectbox("ジャンルを選択", genres)
 
-num_questions = st.selectbox("問題数", [10, 20, 50])
+num_questions = st.selectbox("問題数", [10, 30, 100])
 
 # ----------------------
 # スタートボタン
